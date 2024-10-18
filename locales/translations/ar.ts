@@ -1,0 +1,57 @@
+ export default { 
+  nav: {
+    home: "الصفحة الرئيسية",
+    myListings: "إعلاناتي",
+    addListing: "إضافة إعلان",
+    logout: "تسجيل الخروج",
+    login: "تسجيل الدخول",
+    signup: "إنشاء حساب",
+    rimIjar: "ريم إيجار",
+    labo: "مختبر",
+  },
+  home: {
+    
+  },
+  pagination: {
+    next: "التالي",
+    prev: "السابق",
+    currentPage: "الصفحة",
+    of: "من",
+  },
+  connexion: {
+    title: "تسجيل الدخول",
+    emailLabel: "البريد الإلكتروني",
+    passwordLabel: "كلمة المرور",
+    submitButton: "تسجيل الدخول",
+    emailRequired: "البريد الإلكتروني مطلوب",
+    emailInvalid: "البريد الإلكتروني غير صالح",
+    passwordRequired: "كلمة المرور مطلوبة",
+    passwordShort: "يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل",
+    validationInProgress: "جاري التحقق...",
+    validationFailed: "فشل التحقق",
+    sendingData: "إرسال البيانات إلى الخادم...",
+    success: "نجاح: تسجيل الدخول",
+    error: "خطأ: {error}",
+    unexpectedError: "خطأ غير متوقع: {error}"
+  },
+  register: {
+    title: "تسجيل",
+    emailLabel: "البريد الإلكتروني",
+    passwordLabel: "كلمة المرور",
+    confirmPasswordLabel: "تأكيد كلمة المرور",
+    submitButton: "تسجيل",
+    emailRequired: "البريد الإلكتروني مطلوب",
+    emailInvalid: "البريد الإلكتروني غير صالح",
+    passwordRequired: "كلمة المرور مطلوبة",
+    passwordMinLength: "يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل",
+    passwordsNotMatch: "كلمتا المرور غير متطابقتين",
+    formSubmitted: "تم إرسال النموذج",
+    validationInProgress: "جاري التحقق...",
+    validationFailed: "فشل التحقق",
+    sendingData: "جاري إرسال البيانات إلى الخادم...",
+    success: "نجاح: {message}",
+    error: "خطأ: {message}",
+    unexpectedError: "حدث خطأ غير متوقع",
+  },
+} as const;
+

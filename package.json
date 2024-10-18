@@ -1,0 +1,50 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "e2e": "cypress open --browser chrome",
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@next/bundle-analyzer": "^14.2.14",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/lowdb": "^1.0.15",
+    "@types/node-persist": "^3.1.8",
+    "@types/pg": "^8.11.6",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "bcrypt": "^5.1.1",
+    "cypress": "^13.13.3",
+    "dotenv": "^16.4.5",
+    "intl-locale-textinfo-polyfill": "^2.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "next": "14.2.5",
+    "next-international": "^1.2.4",
+    "node-persist": "^4.0.3",
+    "pg": "^8.12.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "react-leaflet": "^4.2.1",
+    "react-spinners": "^0.14.1",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.1.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}
