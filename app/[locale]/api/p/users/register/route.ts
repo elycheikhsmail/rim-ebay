@@ -58,6 +58,7 @@ export async function POST(request: Request): Promise<NextResponse<RegisterRespo
 
     // Cas 2 : Vérifier si l'email existe déjà
     const userExists = users.find(user => user.email === email);
+    console.log("userExists" , userExists)
     if (userExists) {
       return NextResponse.json(
         { message: 'Cet email est déjà utilisé.' },

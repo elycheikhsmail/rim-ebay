@@ -6,7 +6,7 @@ export default async function AnnonceDetail(
   { params }: { params: { id: string } },
 ) {
   const annonceId = parseInt(params.id); 
-  console.log({annonceId})
+  console.log("annonceId" , {annonceId})
   const annonce  = await handleGetOneAnnonce(annonceId) 
  
 

@@ -1,9 +1,6 @@
- 
 import { Suspense } from "react";
 import { handleGetAnnonces } from "./page.handlers/handleGetAnnonces";
 import { MyListAnnoncesUI } from "./ui";
-
-
 
 export default async function Home(
   {
@@ -12,13 +9,12 @@ export default async function Home(
     searchParams?: {
       page?: string;
     };
-  },
+  },// Ajout d'un paramètre de contexte par défaut
 ) {
-  // msut select only annoces for current user
-  const currentPage = Number(searchParams?.page) || 1;
- 
-  const { pageAnnonceData, errorMessage } = await handleGetAnnonces()
 
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const { pageAnnonceData, errorMessage } = await handleGetAnnonces();
 
   return (
     <main className="min-h-screen">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Annonce } from "@/app/types";
 
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/locales/client"; 
 
 export default function PaginationUI(props: {
   totalPages: number;
@@ -58,6 +59,9 @@ function getValidImageUrl(url: string | undefined): string {
   return typeof url === "string" && url.trim() !== "" ? url : fallbackImageUrl;
 }
 function AnnonceItemUI(annonce: Annonce) {
+
+  const t = useI18n();
+
     const getImage = () => {
         const hostServerForImages = "https://picsum.photos"
         const imgUrl = `${hostServerForImages}/${annonce.firstImagePath}`
@@ -92,7 +96,8 @@ function AnnonceItemUI(annonce: Annonce) {
         </div>
         <div className="p-6 flex-grow">
           <h2 className="text-xl font-semibold mb-2">
-            {annonce.description.slice(0, 5)}
+          
+            {t(`${annonce.description.slice(0, 7)}`)}
           </h2>
           <p className="text-gray-600 mb-2">{annonce.description}</p>
           <p className="text-lg font-bold">{annonce.price}€ / jour</p>
@@ -107,8 +112,11 @@ function AnnonceItemUI(annonce: Annonce) {
 
 
 export  function MyListAnnoncesUI(
-  { totalPages, currentPage, annonces }: { totalPages: number ;currentPage: number; annonces: Annonce[] },
+  { totalPages, currentPage, annonces }: { totalPages: number ;currentPage: number; annonces: Annonce[]},
 ) { 
+  console.log("annonces" , annonces)
+  const t = useI18n();
+
   return (
     <>
       <div className="container mx-auto"> 

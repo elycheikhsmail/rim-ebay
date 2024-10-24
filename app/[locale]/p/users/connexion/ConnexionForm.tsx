@@ -7,7 +7,7 @@ import { useI18n } from "@/locales/client";
 
 export default function ConnexionForm({ lang = "ar" }) { 
   const router = useRouter(); 
-    
+   // console.log("Route", lang)
   const t = useI18n();
  
 
@@ -18,6 +18,7 @@ export default function ConnexionForm({ lang = "ar" }) {
   const [password, setPassword] = useState(defaultPassword);
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [submitStatus, setSubmitStatus] = useState("");
+  console.log("login page")
 
   const validateForm = () => {
     let isValid = true;
