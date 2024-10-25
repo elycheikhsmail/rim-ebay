@@ -97,7 +97,7 @@ function AnnonceItemUI(annonce: Annonce) {
         <div className="p-6 flex-grow">
           <h2 className="text-xl font-semibold mb-2">
           
-            {t(`${annonce.description.slice(0, 7)}`)}
+            {annonce.description.slice(0, 7)}
           </h2>
           <p className="text-gray-600 mb-2">{annonce.description}</p>
           <p className="text-lg font-bold">{annonce.price}€ / jour</p>

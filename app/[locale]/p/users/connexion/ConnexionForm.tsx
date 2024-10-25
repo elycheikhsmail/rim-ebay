@@ -71,10 +71,10 @@ export default function ConnexionForm({ lang = "ar" }) {
         //router.push("/my/list");
         router.refresh();
       } else {
-        setSubmitStatus(t("connexion.error", { error: result.error }));
+        setSubmitStatus(t("connexion.error"));
       }
     } catch (error) {
-      setSubmitStatus(t("connexion.unexpectedError", { error: String(error) }));
+      setSubmitStatus(t("connexion.unexpectedError"));
       console.error("Erreur lors de la soumission:", error);
     }
   };
