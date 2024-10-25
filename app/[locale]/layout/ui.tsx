@@ -22,7 +22,9 @@ export const NavAuthUI = ({ lang = "ar" }) => {
   const handleLogout = async () => {
     const response = await fetch(`/${lang}/api/logout`, { method: "POST" });
     if (response.ok) {
-      router.push("/");
+      console.log("logout")
+      router.push(`/`);
+      //router.push(`${lang}/p/users/connexion`);
       router.refresh();
     }
   };
@@ -40,14 +42,14 @@ export const NavAuthUI = ({ lang = "ar" }) => {
       </div>
       <div className="right flex space-x-6">
         <Link
-          href="/my/list"
+          href={`/${lang}/my/list`}
           className="flex items-center hover:bg-blue-600 px-3 py-2 rounded transition duration-300"
         >
           <FaList className="mr-2" />
           {t('nav.myListings')}
         </Link>
         <Link
-          href="/my/add"
+          href={`/${lang}/my/add`}
           id="addannonce"
           className="flex items-center hover:bg-blue-600 px-3 py-2 rounded transition duration-300"
         >
@@ -70,7 +72,6 @@ export const NavAuthUI = ({ lang = "ar" }) => {
         </Link>}
         {isAr && <Link
           href="/fr"
-
           className="flex items-center hover:bg-purple-500 px-3 py-2 rounded transition duration-300"
         >
           francais
@@ -90,7 +91,7 @@ export const NavNonAuthUI = ({ lang = "ar" }) => {
       <div className="left">
 
         <Link
-          href="/"
+          href={`/${lang}`}
           className="text-2xl font-bold hover:text-yellow-300 transition duration-300"
         >
           <FaHome className="inline-block mr-2" />
@@ -110,14 +111,14 @@ export const NavNonAuthUI = ({ lang = "ar" }) => {
       </div> */}
       <div className="right flex space-x-6">
         <Link
-          href="/p/users/connexion"
+          href={`/${lang}/p/users/connexion`}
           className="flex items-center hover:bg-green-500 px-3 py-2 rounded transition duration-300"
         >
           <FaSignInAlt className="mr-2" />  <span> <br /></span>
           {t('nav.login')}
         </Link>
         <Link
-          href="/p/users/register"
+           href={`/${lang}/p/users/register`}
           className="flex items-center hover:bg-purple-500 px-3 py-2 rounded transition duration-300"
         >
           <FaUserPlus className="mr-2" />

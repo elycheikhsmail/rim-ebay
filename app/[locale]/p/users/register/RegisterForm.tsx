@@ -6,8 +6,10 @@ import { useI18n } from "@/locales/client";
 export default function RegisterForm({ lang = "ar" }) {
   const router = useRouter();
   const t = useI18n();
-  const defaultEmail = 'user11@example.com';
-  const defaultPassword = 'password123';
+  const defaultEmail = ""
+  // 'user11@example.com';
+  const defaultPassword = ""
+  // 'password123';
 
   const [email, setEmail] = useState(defaultEmail);
   const [password, setPassword] = useState(defaultPassword);
@@ -50,15 +52,15 @@ export default function RegisterForm({ lang = "ar" }) {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(t("register.formSubmitted"));
-    setSubmitStatus(t("register.validationInProgress"));
+    console.log("register.formSubmitted");
+    setSubmitStatus("register.validationInProgress");
 
     if (!validateForm()) {
-      setSubmitStatus(t("register.validationFailed"));
+      setSubmitStatus("register.validationFailed");
       return;
     }
 
-    setSubmitStatus(t("register.sendingData"));
+    setSubmitStatus("register.sendingData");
 
     try {
       const response = await fetch(`/${lang}/api/p/users/register`, {
@@ -76,7 +78,7 @@ export default function RegisterForm({ lang = "ar" }) {
       }
 
       console.log("Résultat de l'action:", result);
-      setSubmitStatus(t("register.success", { message: result.message }));
+      setSubmitStatus(t("register.success"));
 
       router.push(`/${lang}//my/list`);
       router.refresh();
