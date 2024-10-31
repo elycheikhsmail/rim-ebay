@@ -20,6 +20,10 @@ export default function ConnexionForm({ lang = "ar" }) {
   const [submitStatus, setSubmitStatus] = useState("");
   console.log("login page")
 
+  const handleNavigate =()=>{
+    router.push(`/${lang}/p/users/register`)
+  }
+
   const validateForm = () => {
     let isValid = true;
     const newErrors = { email: "", password: "" };
@@ -131,6 +135,7 @@ export default function ConnexionForm({ lang = "ar" }) {
             {submitStatus && <p className="mt-4 text-center text-sm">{submitStatus}</p>}
           </div>
         </form>
+        <div onClick={handleNavigate} className="cursor-pointer text-gray-400 font-medium">creer un account </div>
       </div>
     </main>
   );

@@ -8,6 +8,7 @@ export default {
     signup: "إنشاء حساب",
     rimIjar: "ريم إيجار",
     labo: "مختبر",
+    Avances:"متقدم"
   },
   addAnnonce: {
     welcome: "أهلاً بك",

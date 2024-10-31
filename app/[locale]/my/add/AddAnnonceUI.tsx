@@ -53,15 +53,15 @@ export default function AddAnnonceUI({ lang = "ar" }) {
   return (
     <main className="min-h-screen">
       <div className="container mx-auto p-8">
-        <h1 className="text-5xl font-bold mb-4 text-center text-gray-800">
+        {/* <h1 className="text-5xl font-bold mb-4 text-center text-gray-800">
           { t("addAnnonce.welcome")}, Sidi !
-        </h1>
+        </h1> */}
         <h2 className="text-3xl font-semibold mb-4 text-center text-gray-700">
           { t("addAnnonce.addNew") }
         </h2>
-        <p className="text-center mb-8 text-gray-600 italic">
+        {/* <p className="text-center mb-8 text-gray-600 italic">
           { t("addAnnonce.mockedData") }
-        </p>
+        </p> */}
 
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
           <div className="mb-6 relative">
@@ -152,7 +152,7 @@ export default function AddAnnonceUI({ lang = "ar" }) {
             <button
               type="submit"
               id="submit"
-              className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
+              className="bg-blue-900 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded focus:outline-none focus:shadow-outline transition-all duration-300"
             >
               { t("addAnnonce.submitButton") }
             </button>

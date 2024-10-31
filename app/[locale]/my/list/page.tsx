@@ -19,16 +19,16 @@ export default async function Home(
   return (
     <main className="min-h-screen">
       <div className="p-8">
-        <h1 className="text-3xl font-bold mb-4 text-center">
+        {/* <h1 className="text-3xl font-bold mb-4 text-center">
           Bienvenue, Sidi !
-        </h1>
+        </h1> */}
         <h2 className="text-2xl font-semibold mb-4 text-center">
           Mes Annonces
         </h2>
-        <p className="text-center mb-8 text-gray-600">
+        {/* <p className="text-center mb-8 text-gray-600">
           Les données ne sont pas encore stockées dans la base de données
           mocked.
-        </p>
+        </p> */}
         <Suspense>
           {errorMessage ? (
             <p className="text-red-500 text-center">{errorMessage}</p>
