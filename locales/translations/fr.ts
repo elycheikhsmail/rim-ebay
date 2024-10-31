@@ -8,6 +8,7 @@ export default {
     signup: "S'inscrire",
     rimIjar: "Rim Ijar",
     labo: "Labo",
+    Avances:"Avances"
   },
   addAnnonce: {
     welcome: "Bienvenue",

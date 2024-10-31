@@ -1,92 +1,101 @@
+"use client";
 import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
-//import { AnnonceUI } from "@/app/types";
 import { Annonce } from "@/app/types";
-
 
 const fallbackImageUrl = "/noimage.jpg";
 
-export default function AnnonceDetailUI(
-  props: { annonceId: number; annonce: Annonce },
-) {
+export default function AnnonceDetailUI({ annonceId, annonce }: { annonceId: number; annonce: Annonce }) {
   const hostServerForImages = "https://picsum.photos";
-  const getImageUrl = (imagePath: string) => {
-    return `${hostServerForImages}/${imagePath}`;
-  };
+  const getImageUrl = (imagePath: string) => `${hostServerForImages}/${imagePath}`;
 
   const getImage = (imagePath: string, imageDescription: string = "") => {
     const imgUrl = getImageUrl(imagePath);
     return (
-      <div className="relative h-48 w-full">
+      <div className="relative h-40 sm:h-60 w-full">
         <Image
           src={imgUrl}
           alt={imageDescription}
           fill
           unoptimized
           style={{ objectFit: "cover" }}
+          className="rounded-lg"
         />
       </div>
     );
   };
 
   const NoImage = () => (
-    <div className="relative h-48 w-full">
+    <div className="relative h-40 sm:h-60 w-full">
       <Image
         src={fallbackImageUrl}
-        alt={"no image uploaded by user"}
+        alt="no image uploaded by user"
         fill
         unoptimized
         style={{ objectFit: "cover" }}
+        className="rounded-lg"
       />
     </div>
   );
 
-  const createdAt = new Date(props.annonce.createdAt)
-  //props.annonce.createdAt
-  //new Date(props.annonce.createdAt)
+  const createdAt = new Date(annonce.createdAt);
+  const formattedDate = `${createdAt.getDate()}-${createdAt.getMonth() + 1}-${createdAt.getFullYear()}`;
+  const formattedTime = `${createdAt.getHours()}h : ${createdAt.getMinutes()} min`;
 
-  const formatedDatePartOne = `${createdAt.getDay()}-${createdAt.getMonth()}-${createdAt.getFullYear()} `
-
-  const formatedDatePartTwo = `${createdAt.getHours()} h : ${createdAt.getMinutes()} min`
   return (
-    <main className="min-h-screen">
-      <div className="p-8">
-        <article className="bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto mt-8">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
-
-            {props.annonce.typeAnnonceNameAr} /  {props.annonce.categorieNameAr}
-
-          </span>
-          <h1 className="text-3xl font-bold mb-4">{props.annonce.title}</h1>
-          <p className="text-gray-600 mb-4">{props.annonce.description}</p>
-          <p className="text-2xl font-bold mb-4">
-            {props.annonce.price} UMR / jour
-          </p>
-
-          <div className="space-y-4">
-            {props.annonce.haveImage &&
-              props.annonce.images.map((item) => getImage(item.imagePath))}
-            {!props.annonce.haveImage && <NoImage />}
-          </div>
-
-
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md w-full mx-auto mt-10">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Contact</h2>
-            <div className="space-y-2">
-              <p className="text-gray-600">Téléphone :</p>
-              <p className="text-xl font-semibold text-blue-600">22 33 44 55</p>
-            </div>
-          </div>
-
-          <div className="p-6 flex-grow">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2">
-              <span>  {formatedDatePartOne}  </span> |
-              <span>  {formatedDatePartTwo}  </span>
-            </span>
-          </div>
-
-        </article>
+    <article className="flex flex-col gap-4 bg-white shadow-lg  rounded-xl p-4 max-w-lg mx-auto my-6 sm:max-w-2xl sm:p-6 md:my-8">
+      
+      <div className="space-y-2 h-40 sm:h-60 w-full">
+        {annonce.haveImage ? (
+          <Carousel className="rounded-xl" infiniteLoop autoPlay showThumbs={false}>
+            {annonce.images.map((item, index) => (
+              <div className="h-40 sm:h-60" key={index}>
+                {getImage(item.imagePath)}
+              </div>
+            ))}
+          </Carousel>
+        ) : (
+          <NoImage />
+        )}
       </div>
-    </main>
+
+      <div className="p-2">
+        <span className="inline-block bg-green-800 rounded-md px-2 py-1 text-xs sm:text-sm font-semibold text-white">
+          {annonce.typeAnnonceNameAr} / {annonce.categorieNameAr}
+        </span>
+        
+        <h1 className="text-xl sm:text-2xl font-bold my-2">{annonce.title}</h1>
+        
+        <p className="text-gray-600 text-sm sm:text-base mb-4">{annonce.description}</p>
+
+        <div className="hover:bg-gray-100 rounded-md p-0">
+        <div className="border-t border-green-800 my-2"></div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm sm:text-base font-bold">PRIX</span>
+            <p className="text-base sm:text-lg text-green-800 font-bold">{annonce.price} UMR / jour</p>
+          </div>
+          <div className="border-t border-green-800 my-2"></div>
+        </div>
+        
+        <div className="hover:bg-gray-100 rounded-md p-0 mt-2">
+
+        <div className="border-t border-green-800 my-2"></div>
+          <div className="flex justify-between items-center">
+              <h2 className="text-lg font-bold text-gray-800 mb-1">Contact</h2>
+              <p className="text-md font-semibold text-blue-600">22 33 44 55</p>
+          </div>
+          <div className="border-t border-green-800 my-2"></div>
+          
+        </div>
+
+        <div className="mt-4">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
+            {formattedDate} | {formattedTime}
+          </span>
+        </div>
+      </div>
+    </article>
   );
 }

@@ -6,7 +6,7 @@ import { Annonce } from "@/app/types";
 
 import { useRouter } from "next/navigation";
 import { useI18n } from "@/locales/client"; 
-
+import Pagination from "../../ui/PaginationUI";
 export default function PaginationUI(props: {
   totalPages: number;
   currentPage: number;
@@ -27,7 +27,7 @@ export default function PaginationUI(props: {
 
   return (
     <>
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 flex gap-2 justify-center">
         <button 
           onClick={() => handleClickPrevPage()}
           disabled={props.currentPage === 1}
@@ -97,11 +97,21 @@ function AnnonceItemUI(annonce: Annonce) {
         <div className="p-6 flex-grow">
           <h2 className="text-xl font-semibold mb-2">
           
-            {annonce.description.slice(0, 7)}
+            {annonce.title}
           </h2>
-          <p className="text-gray-600 mb-2">{annonce.description}</p>
-          <p className="text-lg font-bold">{annonce.price}€ / jour</p>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2">
+          <p className="text-gray-600 mb-2 mx-2">{annonce.description}</p>
+
+          <div className="mt-5">
+              <div className="border-t border-green-800  my-2"></div>
+              <div className="flex justify-between">
+                  <p className="font-bold">PRIX</p>
+                  <p className="text-lg text-green-700 font-bold">{annonce.price}€ / jour</p>
+              </div>
+              <div className="border-t border-green-800  my-2"></div>
+          </div>
+          
+          
+          <span className="inline-block bg-green-800 rounded-full px-3 py-1 text-sm font-semibold text-white mt-2">
             {annonce.categorieName}
           </span>
         </div>
@@ -131,7 +141,10 @@ export  function MyListAnnoncesUI(
             </Link>
           ))}
         </div>
-        <PaginationUI totalPages={totalPages} currentPage={currentPage} />
+      
+        <Pagination totalPages={totalPages} currentPage={currentPage} />
+      
+      
       </div>
     </>
   );
