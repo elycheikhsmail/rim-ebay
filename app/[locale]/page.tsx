@@ -19,8 +19,10 @@ export default async function Home({
 
   return (
     <main className="min-h-screen overflow-hidden">
-      <div className="p-5 mx-10 ">
-        <div className="px-4 py-2">
+      <div className="p-5 sm:mx-16 ">
+      
+        <div className="flex justify-between px-14 py-2">
+          <p className="font-extrabold text-gray-800 text-lg sm:text-xl mb-2 sm:mb-0">Tout l`anonnce </p>
           <Input />
         </div>
         

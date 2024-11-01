@@ -1,4 +1,3 @@
-// app/p/users/connexion/ConnexionForm.tsx
 "use client";
 
 import { FormEvent, useState } from "react";
@@ -7,10 +6,8 @@ import { useI18n } from "@/locales/client";
 
 export default function ConnexionForm({ lang = "ar" }) { 
   const router = useRouter(); 
-   // console.log("Route", lang)
   const t = useI18n();
- 
-
+  
   const defaultEmail = 'user1@example.com';
   const defaultPassword = 'password123';
 
@@ -18,11 +15,11 @@ export default function ConnexionForm({ lang = "ar" }) {
   const [password, setPassword] = useState(defaultPassword);
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [submitStatus, setSubmitStatus] = useState("");
-  console.log("login page")
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleNavigate =()=>{
-    router.push(`/${lang}/p/users/register`)
-  }
+  const handleNavigate = () => {
+    router.push(`/${lang}/p/users/register`);
+  };
 
   const validateForm = () => {
     let isValid = true;
@@ -58,6 +55,7 @@ export default function ConnexionForm({ lang = "ar" }) {
     }
 
     setSubmitStatus(t("connexion.sendingData"));
+    setIsLoading(true);
 
     try {
       const response = await fetch(`/${lang}/api/p/users/connexion`, {
@@ -71,8 +69,7 @@ export default function ConnexionForm({ lang = "ar" }) {
       const result = await response.json();
       if (response.ok) {
         setSubmitStatus(t("connexion.success"));
-        router.push(`/${lang}//my/list`);
-        //router.push("/my/list");
+        router.push(`/${lang}/my/list`);
         router.refresh();
       } else {
         setSubmitStatus(t("connexion.error"));
@@ -80,6 +77,8 @@ export default function ConnexionForm({ lang = "ar" }) {
     } catch (error) {
       setSubmitStatus(t("connexion.unexpectedError"));
       console.error("Erreur lors de la soumission:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -128,15 +127,40 @@ export default function ConnexionForm({ lang = "ar" }) {
             <button
               id="submit"
               type="submit"
-              className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-300"
+              className={`w-full font-bold py-2 px-4 rounded-md transition-colors duration-300 
+                ${isLoading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700 text-white"}`
+              }
+              disabled={isLoading} // Disable button while loading
             >
-              {t("connexion.submitButton")}
+              {isLoading ? (
+                <div className="loader"></div>
+              ) : (
+                t("connexion.submitButton")
+              )}
             </button>
             {submitStatus && <p className="mt-4 text-center text-sm">{submitStatus}</p>}
           </div>
         </form>
-        <div onClick={handleNavigate} className="cursor-pointer text-gray-400 font-medium">creer un account </div>
+        <div onClick={handleNavigate} className="cursor-pointer text-gray-400 font-medium">creer un account</div>
       </div>
+
+      {/* CSS for the loader */}
+      <style jsx>{`
+        .loader {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #3498db;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          animation: spin 1s linear infinite;
+          margin: auto;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </main>
   );
 }

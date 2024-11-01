@@ -26,7 +26,7 @@ function AnnonceItemUI(annonce: Annonce) {
   const formatedDatePartTwo = `${createdAt.getHours()} h : ${createdAt.getMinutes()} min`;
 
   return (
-    <article className="flex flex-col w-full bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow h-full sm:flex-row">
+    <article className="flex flex-col w-full bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow h-full sm:flex-row sm:max-w-lg sm:mx-auto mx-2">
       <div className="relative h-48 sm:h-auto w-full sm:w-1/2">
         {annonce.haveImage ? getImage() : (
           <Image
@@ -40,7 +40,7 @@ function AnnonceItemUI(annonce: Annonce) {
       </div>
 
       <div className="p-4 sm:p-6 flex flex-col flex-grow">
-        <span className="inline-block bg-green-800 rounded-full  px-3 py-1 text-xs sm:text-sm font-semibold text-white mt-1">
+        <span className="inline-block bg-green-800 rounded-full px-5 w-fit py-1 text-xs sm:text-sm font-semibold text-white mt-1">
           {annonce.typeAnnonceName} / {annonce.categorieName}
         </span>
         <h2 className="text-lg sm:text-xl mt-3 font-semibold mb-1">{annonce.title}</h2>
@@ -60,6 +60,7 @@ function AnnonceItemUI(annonce: Annonce) {
   );
 }
 
+
 export default function ListAnnoncesUI({
   totalPages,
   currentPage,
@@ -70,7 +71,7 @@ export default function ListAnnoncesUI({
   annonces: Annonce[];
 }) {
   return (
-    <div className="container mx-auto px-4">
+    <div className="container  px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {annonces.map((annonce) => (
           <Link
