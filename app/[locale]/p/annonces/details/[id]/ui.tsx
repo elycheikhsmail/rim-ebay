@@ -91,10 +91,17 @@ export default function AnnonceDetailUI({ annonceId, annonce }: { annonceId: num
         </div>
 
         <div className="mt-4">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
-            {formattedDate} | {formattedTime}
-          </span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700">
+              {formattedDate} | {formattedTime}
+            </span>
         </div>
+
+        <div className="mt-6 p-4 font-bold bg-gray-100 rounded-lg">
+          <p className="text-xs sm:text-xl text-gray-600">
+            Notre plateforme n'est pas responsable de ce produit ou service. Toutes les informations sont fournies par l'annonceur, et nous ne garantissons pas leur exactitude ou leur qualité. Veuillez effectuer vos propres vérifications avant de procéder à tout achat ou réservation.
+          </p>
+        </div>
+
       </div>
     </article>
   );
