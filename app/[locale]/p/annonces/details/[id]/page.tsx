@@ -1,6 +1,6 @@
 import AnnonceDetailCompo from "./ui";
 import { handleGetOneAnnonce } from "./page.handlers/handleGetOneAnnonce";
-  
+import  BackButton from "../../../../components/Navigation"
 export default async function AnnonceDetail(
   { params }: { params: { id: string } },
 ) {
@@ -18,8 +18,14 @@ export default async function AnnonceDetail(
 
   return (
     <div  className="p-4 sm:p-6 md:p-9 overflow-hidden">
-          <h1 className="font-bold text-xl sm:text-2xl md:text-3xl text-center md:text-left md:ml-32 lg:ml-96">Details de l`annoce</h1>
-         <AnnonceDetailCompo annonceId={annonceId} annonce={annonce} />
+          <div className="md:ml-32 lg:ml-44">
+              <BackButton />
+          </div>
+           
+           <div>
+                <AnnonceDetailCompo annonceId={annonceId} annonce={annonce} />
+           </div>
+        
     </div>
   
   );

@@ -8,7 +8,9 @@ export default {
     signup: "إنشاء حساب",
     rimIjar: "ريم إيجار",
     labo: "مختبر",
-    Avances:"متقدم"
+    Avances:"متقدم",
+    Recherche:"بحث",
+    Annoce:"جميع الإعلانات"
   },
   addAnnonce: {
     welcome: "أهلاً بك",
@@ -24,7 +26,7 @@ export default {
     categories: {
       immobilier: "العقارات",
       véhicule: "السيارات",
-      Emploi: "الوظائف"
+      Emploi: "الوظائف",
     },
     subCategories: {
       maison: "منزل",
