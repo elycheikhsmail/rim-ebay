@@ -4,7 +4,8 @@ import ListAnnoncesUI from "./ui/ListAnnoncesUI";
  
 import InputDialog from "./components/InputDialog";
 import Input from "./components/Input";
-import { useI18n } from "@/locales/client"; 
+import AnnoceTitle from "./components/AnnoceTitle";
+
  
 
 export default async function Home({
@@ -15,7 +16,7 @@ export default async function Home({
   };
 }) {
  
-  const t = useI18n();
+  // const t = useI18n();
   const currentPage = Number(searchParams?.page) || 1;
   const { pageAnnonceData, errorMessage } = await handleGetAnnonces()
   
@@ -25,7 +26,7 @@ export default async function Home({
       <div className="p-5 sm:mx-16 ">
       
         <div className="flex justify-between  px-4 py-2">
-          <p className="font-extrabold mr-10 text-xl  text-blue-600 sm:text-xl mb-2 sm:mb-0">{t("nav.Annoce")} </p>
+          <AnnoceTitle />
           <Input />
         </div>
         
