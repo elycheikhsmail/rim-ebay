@@ -8,7 +8,9 @@ export default {
     signup: "S'inscrire",
     rimIjar: "Rim Ijar",
     labo: "Labo",
-    Avances:"Avances"
+    Avances:"Avances",
+    Recherche:"Recherche",
+    Annoce:"Tous les anonnces"
   },
   addAnnonce: {
     welcome: "Bienvenue",

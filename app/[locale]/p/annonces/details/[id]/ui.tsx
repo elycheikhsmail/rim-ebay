@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
 import { Annonce } from "@/app/types";
-
+import   BackButton  from "../../../../components/Navigation"
 const fallbackImageUrl = "/noimage.jpg";
 
 export default function AnnonceDetailUI({ annonceId, annonce }: { annonceId: number; annonce: Annonce }) {
@@ -29,6 +29,7 @@ export default function AnnonceDetailUI({ annonceId, annonce }: { annonceId: num
 
   const NoImage = () => (
     <div className="relative h-40 sm:h-60 w-full">
+    
       <Image
         src={fallbackImageUrl}
         alt="no image uploaded by user"
@@ -47,6 +48,7 @@ export default function AnnonceDetailUI({ annonceId, annonce }: { annonceId: num
   return (
     <article className="flex flex-col gap-4 bg-white shadow-lg  rounded-xl p-4 max-w-lg mx-auto my-6 sm:max-w-2xl sm:p-6 md:my-8">
       
+      <h2 className="text-2xl font-bold mb-4 text-blue-600 text-center">Details de l`annoce</h2>
       <div className="space-y-2 h-40 sm:h-60 w-full">
         {annonce.haveImage ? (
           <Carousel className="rounded-xl" infiniteLoop autoPlay showThumbs={false}>
