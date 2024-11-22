@@ -19,8 +19,16 @@ export default function RootLayout({
     }
 }>) {
  
-  const { direction: dir } = new Locale(params.locale).textInfo
+  const getDirection = (locale: string) => {
+    try {
+      return new Locale(locale).textInfo.direction;
+    } catch {
+      // Par défaut, on retourne 'ltr' (left-to-right) en cas d'erreur
+      return 'ltr';
+    }
+  }
 
+  const dir = getDirection(params.locale);
 
   return (
     <html lang={params.locale} dir={dir}>
