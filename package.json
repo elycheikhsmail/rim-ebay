@@ -8,7 +8,8 @@
     "lint": "next lint",
     "e2e": "cypress open --browser chrome",
     "dev": "next dev",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-push": "npm run lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
