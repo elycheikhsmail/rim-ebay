@@ -9,7 +9,7 @@
     "e2e": "cypress open --browser chrome",
     "dev": "next dev",
     "prepare": "husky install",
-    "pre-push": "npm run lint"
+    "pre-push": "pnpm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
